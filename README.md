@@ -1,3 +1,15 @@
+# Packages: 
+
+1. [Styled Components: ](https://www.styled-components.com/)
+
+2. [React easy state](https://github.com/solkimicreb/react-easy-state)
+
+3. [React router](https://reacttraining.com/react-router/web/guides/quick-start)
+
+4. [Lodash decorators](https://www.npmjs.com/package/lodash-decorators#bind)
+
+# Create React App
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
