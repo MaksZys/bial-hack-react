@@ -1,0 +1,40 @@
+.menuContainer {
+  min-height: 950px;
+  height: 100vh;
+
+  &Active {
+    width: 375px;
+    animation: showMenu 0.7s ease;
+  }
+
+  &Disabled {
+    width: 60px;
+    animation: hideMenu 0.3s ease;
+  }
+}
+
+@keyframes showMenu {
+  0% {
+    width: 60px;
+  }
+
+  100% {
+    width: 375px;
+  }
+}
+
+@keyframes hideMenu {
+  0% {
+    width: 375px;
+  }
+  100% {
+    width: 60px;
+  }
+}
+
+.menuLabel {
+  background-color: red;
+  width: 100%;
+  display: inline-flex;
+  flex-wrap: nowrap;
+}

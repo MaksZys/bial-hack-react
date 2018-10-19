@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
 import './App.css';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 // views
 import Home from './views/HomeView';
-
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import ExampleView from './views/exampleView';
 
 class App extends Component {
   render() {
     return (
       <Router>
-        <Route exact path="/" component={Home} />
+        <div>
+          <Route exact path="/" component={Home} />
+          <Route path='/example' component={ExampleView}/>
+        </div>
       </Router>
     );
   }
