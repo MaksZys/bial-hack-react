@@ -1,0 +1,72 @@
+@import '../../store/assets/styles.scss';
+
+.homeContainer {
+    padding: 0 10rem;
+    
+    .homeTitle {
+        animation-name: slide-right;
+        animation-duration: 1s;
+        animation-fill-mode: backwards;
+    }
+
+    .contentCard {
+        display: flex;
+        box-shadow: 0px 0px 8px 2px rgba(0,0,0,0.75);
+        animation-name: slide-right;
+        animation-duration: 2s;
+        animation-fill-mode: backwards;
+        margin-bottom: 1rem;
+
+        .imgWrapper {
+            height: 15rem;
+            width: 50%;
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        p {
+            flex-basis: 50%;
+            font-size: .875rem;
+            margin: 0 1rem;
+        }
+    }
+
+    .contractorCard {
+        margin-top: 1rem;
+        box-shadow: 0px 0px 8px 2px rgba(0,0,0,0.75);
+        padding: 1rem 0 0 1rem;
+
+        .userName {
+            display: flex;
+            margin-top: .375rem;
+
+            .iconUser {
+                margin-right: .375rem;
+                svg {
+                    width: 1.25rem;
+                    height: 1.25rem;
+                }
+            }
+        }
+
+        h3 {
+            margin: 0;
+        }
+    }
+
+    .iconWrapper {
+        display: flex;
+        justify-content: flex-end;
+
+        span {
+            margin: 0 .375rem;
+
+            svg {
+                width: 1.5rem;
+                height: 1.5rem;
+            }
+        }
+    }
+}
