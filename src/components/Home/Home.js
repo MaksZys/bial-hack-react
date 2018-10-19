@@ -26,7 +26,7 @@ class Home extends Component {
   changeCardUp() {
     (this.state.cardNumber === 0) ? this.setState({cardNumber: 2}) : this.setState({cardNumber: this.state.cardNumber - 1});
   }
-  
+
   render() {
     return (
       <div className={styles.homeContainer}>
@@ -61,8 +61,8 @@ class Home extends Component {
           </div>
         }
         <div className={styles.iconWrapper}>
-		      <Icon icon='direction-left' className={styles.rightArrow} onClick={this.changeCardDown} />
-		      <Icon icon='direction-right' className={styles.rightArrow} onClick={this.changeCardUp} />
+          <Icon icon='direction-left' className={styles.rightArrow} onClick={this.changeCardDown} />
+          <Icon icon='direction-right' className={styles.rightArrow} onClick={this.changeCardUp} />
         </div>
         <div className={styles.contractorCard}>
           <h3>Aplikację wykonali:</h3>
@@ -87,7 +87,7 @@ class Home extends Component {
             Kamil Łętowski
           </span>
         </div>
-      </div>      
+      </div>
     );
   }
 }
