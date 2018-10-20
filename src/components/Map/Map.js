@@ -2,6 +2,8 @@ import React from 'react';
 import { Map, InfoWindow, Marker, GoogleApiWrapper, Polyline } from 'google-maps-react';
 import axios from 'axios';
 import decodePolyLine from 'decode-google-map-polyline';
+import Container from '../Container/Container';
+import Menu from '../Menu/Menu';
 
 export class MapContainer extends React.Component {
     constructor(props) {
@@ -14,7 +16,7 @@ export class MapContainer extends React.Component {
             selectedTrainer: {},
             places: []
         };
-        this.init();
+        this.drawPathOnMap();
     }
 
     drawPathOnMap = () => {
@@ -55,18 +57,22 @@ export class MapContainer extends React.Component {
     render() {
         return (
             <div className="home-map">
+            <Container>
                     <Map google={this.props.google}
                         zoom={12}
-                        initialCenter={{
-                            lat: this.props.center.lat,
-                            lng: this.props.center.lng
-                        }}>
+                        // initialCenter={{
+                        //     lat: this.props.center.lat,
+                        //     lng: this.props.center.lng
+                        // }}>
+                        >
                            <Polyline
                            path= {this.state.places}
                            strokeOpacity= {1.0}
                            strokeWeight= {2}
                        />
                     </Map> : ''
+                    <Menu/>
+                    </Container>
             </div>
 
         );

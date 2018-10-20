@@ -1,15 +1,20 @@
 import React, {Component} from 'react';
 import Container from '../components/Container/Container';
 import Menu from '../components/Menu/Menu';
+import RfidCard from '../components/Menu/MenuComponents/RFID/RfidCard';
+
+
 
 class ExampleView extends Component {
   render() {
     return (
       <div>
         <Container>
-          <div style={{backgroundColor: 'red', width: '40px' }}>duap</div>
+          <div>
+
+          </div>
           <Menu>
-            <h4>Hi</h4>
+            <RfidCard/>
           </Menu>
         </Container>
       </div>

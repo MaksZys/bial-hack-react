@@ -1,8 +1,8 @@
-@import '../../store/assets/styles.scss';
+@import '../../assets/styles/styles.scss';
 
 .homeContainer {
     padding: 0 10rem;
-    
+
     .homeTitle {
         animation-name: slide-right;
         animation-duration: 1s;

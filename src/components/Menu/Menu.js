@@ -1,8 +1,12 @@
 import React, {Component} from 'react';
-import {Icon} from '@blueprintjs/core';
+import {Card, Icon, InputGroup} from '@blueprintjs/core';
+import {view} from 'react-easy-state';
 
 // styles
 import styles from './Menu.module.scss';
+
+// store
+import menu from '../../stores/MenuStore';
 
 class Menu extends Component {
 
@@ -13,6 +17,7 @@ class Menu extends Component {
     };
 
     this.changeMenuState = this.changeMenuState.bind(this);
+    this.searchValue = this.searchValue.bind(this);
   }
 
   changeMenuState() {
@@ -21,36 +26,52 @@ class Menu extends Component {
     });
   }
 
+  searchValue(event) {
+    menu.search = event.target.value;
+  }
+
+
+
   render() {
     return (
       <div align="right"
         className={this.state.showMenu ? styles.menuContainerActive : styles.menuContainerDisabled}>
         {
           this.state.showMenu ?
-            <div onClick={this.changeMenuState} className={styles.menuLabel}>
-              <h3>
-                <Icon icon='chevron-right'/>
-                Menu
-              </h3>
+            <div onClick={this.changeMenuState}
+              className={styles.menuLabel}>
+              <div>
+                <Icon className={styles.hamburgerIcon} color='white'
+                  iconSize={40} icon='cross'/>
+              </div>
             </div>
             :
-            <div onClick={this.changeMenuState} className={styles.menuLabel}>
-              <h3>
-                <Icon icon='chevron-left'/>
-              </h3>
+            <div onClick={this.changeMenuState}
+              className={styles.menuLabel}>
+              <div>
+                <Icon className={styles.hamburgerIcon} color='white'
+                  iconSize={40} icon='chevron-left'/>
+              </div>
             </div>
         }
         {
           this.state.showMenu ?
             <div>
+              <Card>
+                <InputGroup onChange={this.searchValue} large round leftIcon='search'/>
+                {menu.search}
+              </Card>
+              <br/>
               {this.props.children}
             </div>
             :
-            <div></div>
+            <div style={{height: '100%'}}
+              onClick={this.changeMenuState}>
+            </div>
         }
       </div>
     );
   }
 }
 
-export default Menu;
+export default view(Menu);
