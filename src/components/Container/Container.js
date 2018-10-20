@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 
 // styles
 import styles from './Container.module.scss';
+import Menu from '../Menu/Menu';
 
 // components
 import RfidCard from '../Menu/MenuComponents/RFID/RfidCard';
