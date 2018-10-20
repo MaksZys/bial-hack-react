@@ -22,13 +22,14 @@ export class MapContainer extends React.Component {
       searchPlaces: [],
       markersReady: false
     };
+    this.searchPolylines = this.searchPolylines.bind(this);
   }
 
   async componentDidMount() {
-  
+    // this.searchPolylines('BL 46467');
   }
 
-  searchPolylines(value){
+  searchPolylines (value){
     const apiUrl = 'https://bial-hack-api.azurewebsites.net/api/trashtransport/GetByVehicleNumber?vehicleNumber=' + value;
     const polyline = [];
     axios.get(apiUrl)
