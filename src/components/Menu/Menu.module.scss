@@ -1,17 +1,4 @@
-.menuContainer {
-  min-height: 950px;
-  height: 100vh;
-
-  &Active {
-    width: 375px;
-    animation: showMenu 0.7s ease;
-  }
-
-  &Disabled {
-    width: 60px;
-    animation: hideMenu 0.3s ease;
-  }
-}
+@import "../../assets/styles/styles";
 
 @keyframes showMenu {
   0% {
@@ -19,22 +6,41 @@
   }
 
   100% {
-    width: 375px;
+    width: 350px;
   }
 }
 
 @keyframes hideMenu {
   0% {
-    width: 375px;
+    width: 350px;
   }
   100% {
     width: 60px;
   }
 }
 
+.menuContainer {
+  min-height: 950px;
+  height: 100vh;
+  background-color: $secondary-color;
+
+  &Active {
+    width: 350px;
+    animation: showMenu 0.7s ease;
+    background-color: $secondary-color;
+  }
+
+  &Disabled {
+    width: 50px;
+    animation: hideMenu 0.3s ease;
+    background-color: $secondary-color;
+  }
+}
+
 .menuLabel {
-  background-color: red;
+  background-color: $primary-color;
   width: 100%;
+  height: 45px;
   display: inline-flex;
-  flex-wrap: nowrap;
+  justify-content: flex-start;
 }

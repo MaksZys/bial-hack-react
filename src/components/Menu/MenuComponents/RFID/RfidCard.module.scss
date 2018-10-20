@@ -1,0 +1,24 @@
+@keyframes animateArrow {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(90deg);
+  }
+}
+
+.rfidContainer {
+
+}
+
+.headerContainer {
+  display: inline-flex;
+  width: 100%;
+}
+
+.animateArrow {
+  padding-top: 1px;
+  margin-right: 5px;
+  animation: animateArrow 0.5s ease;
+}

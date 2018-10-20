@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
-import { Button, Icon } from '@blueprintjs/core';
+import { Icon } from '@blueprintjs/core';
 
 // styles
 import styles from './home.module.scss';
-import search from '../../store/assets/images/search.jpg';
-import bialystok from '../../store/assets/images/bialystok-mapa.jpg';
-import knowledge from '../../store/assets/images/knowledge.jpg';
+
+// images
+import search from '../../assets/images/search.jpg';
+import bialystok from '../../assets/images/bialystok-mapa.jpg';
+import knowledge from '../../assets/images/knowledge.jpg';
 
 class Home extends Component {
   constructor() {
@@ -35,7 +37,7 @@ class Home extends Component {
           this.state.cardNumber === 0 &&
           <div className={styles.contentCard}>
             <div className={styles.imgWrapper}>
-              <img src={search} alt='search image'/>
+              <img src={search} alt='sample 1'/>
             </div>
             <p>treść częście która chcemy przekazać</p>
           </div>
@@ -46,7 +48,7 @@ class Home extends Component {
           <div className={styles.contentCard}>
             <p>kolejna treść</p>
             <div className={styles.imgWrapper}>
-              <img src={bialystok} alt='search image'/>
+              <img src={bialystok} alt='sample 2'/>
             </div>
           </div>
         }
@@ -55,7 +57,7 @@ class Home extends Component {
           this.state.cardNumber === 2 &&
           <div className={styles.contentCard}>
             <div className={styles.imgWrapper}>
-              <img src={knowledge} alt='search image'/>
+              <img src={knowledge} alt='sample 3'/>
             </div>
             <p>i ostatnia część</p>
           </div>
