@@ -5,6 +5,9 @@ import decodePolyline from 'decode-google-map-polyline';
 import Container from '../Container/Container';
 import Menu from '../Menu/Menu';
 
+import menu from '../../stores/MenuStore';
+import {view} from 'react-easy-state';
+
 export class MapContainer extends React.Component {
   constructor(props) {
     super(props);
@@ -67,7 +70,6 @@ export class MapContainer extends React.Component {
   render() {
     return (
       <div className="home-map">
-        <Container>
           <Map google={this.props.google}
             zoom={15}
             initialCenter={{
@@ -83,16 +85,14 @@ export class MapContainer extends React.Component {
                 strokeWeight={4}
               />
             ) : ''}
-
           </Map>
-          <Menu />
-        </Container>
       </div>
 
     );
   }
 }
 
-export default GoogleApiWrapper({
+export default view(GoogleApiWrapper({
   apiKey: ('AIzaSyCzPSZ_8Zp_lr8s2Dduhsnm1KoUwtvuNVY')
-})(MapContainer)
+})(MapContainer));
+

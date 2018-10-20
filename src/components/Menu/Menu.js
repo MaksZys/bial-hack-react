@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Card, Icon, InputGroup} from '@blueprintjs/core';
+import {Card, Icon, InputGroup, AnchorButton} from '@blueprintjs/core';
 import {view} from 'react-easy-state';
 
 // styles
@@ -18,6 +18,7 @@ class Menu extends Component {
 
     this.changeMenuState = this.changeMenuState.bind(this);
     this.searchValue = this.searchValue.bind(this);
+    this.searchValueDlaMarcina = this.searchValueDlaMarcina.bind(this);
   }
 
   changeMenuState() {
@@ -30,7 +31,9 @@ class Menu extends Component {
     menu.search = event.target.value;
   }
 
-
+  searchValueDlaMarcina(event) {
+    menu.searchDlaMarcina = event.target.value;
+  }
 
   render() {
     return (
@@ -58,8 +61,7 @@ class Menu extends Component {
           this.state.showMenu ?
             <div>
               <Card>
-                <InputGroup onChange={this.searchValue} large round leftIcon='search'/>
-                {menu.search}
+                <InputGroup onChange={this.searchValue} large round leftIcon='search' className={styles.inuptGroup} />
               </Card>
               <br/>
               {this.props.children}
