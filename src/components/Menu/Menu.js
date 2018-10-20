@@ -12,18 +12,13 @@ class Menu extends Component {
 
   constructor() {
     super();
-    this.state = {
-      showMenu: false,
-    };
 
     this.changeMenuState = this.changeMenuState.bind(this);
     this.searchValue = this.searchValue.bind(this);
   }
 
   changeMenuState() {
-    this.setState({
-      showMenu: !this.state.showMenu,
-    });
+    menu.showMenu = !menu.showMenu;
   }
 
   searchValue(event) {
@@ -35,9 +30,9 @@ class Menu extends Component {
   render() {
     return (
       <div align="right"
-        className={this.state.showMenu ? styles.menuContainerActive : styles.menuContainerDisabled}>
+        className={menu.showMenu ? styles.menuContainerActive : styles.menuContainerDisabled}>
         {
-          this.state.showMenu ?
+          menu.showMenu ?
             <div onClick={this.changeMenuState}
               className={styles.menuLabel}>
               <div>
@@ -55,13 +50,12 @@ class Menu extends Component {
             </div>
         }
         {
-          this.state.showMenu ?
+          menu.showMenu ?
             <div>
               <Card>
                 <InputGroup onChange={this.searchValue} large round leftIcon='search'/>
                 {menu.search}
               </Card>
-              <br/>
               {this.props.children}
             </div>
             :

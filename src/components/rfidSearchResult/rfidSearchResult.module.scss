@@ -1,0 +1,28 @@
+.listOfDataContainer {
+  overflow-y: scroll;
+}
+
+.listOfDataContainer::-webkit-scrollbar {
+  display: none;
+}
+
+.loadingContainer {
+  height: 100%;
+}
+
+.loading {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    width: 4rem;
+  }
+}
+
+.list {
+  list-style: none;
+  margin-right: 3rem;
+}
+

@@ -57,7 +57,6 @@ export class MapContainer extends React.Component {
     render() {
         return (
             <div className="home-map">
-            <Container>
                     <Map google={this.props.google}
                         zoom={12}
                         // initialCenter={{
@@ -71,10 +70,7 @@ export class MapContainer extends React.Component {
                            strokeWeight= {2}
                        />
                     </Map> : ''
-                    <Menu/>
-                    </Container>
             </div>
-
         );
     }
 }

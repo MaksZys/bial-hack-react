@@ -1,15 +1,9 @@
-@keyframes animateArrow {
-  0% {
-    transform: rotate(0);
-  }
-
-  100% {
-    transform: rotate(90deg);
-  }
+.cardStyles {
+  margin: 1rem;
 }
 
 .rfidContainer {
-
+  cursor: pointer;
 }
 
 .headerContainer {
@@ -17,8 +11,21 @@
   width: 100%;
 }
 
-.animateArrow {
+.arrowImage {
   padding-top: 1px;
   margin-right: 5px;
-  animation: animateArrow 0.5s ease;
+}
+
+.animateArrow {
+  animation: animateArrow 3s ease;
+}
+
+.searchContainer {
+  margin-top: 1rem;
+}
+
+.buttonImage {
+  position: relative;
+  top: -35px;
+  right: 10px;
 }
