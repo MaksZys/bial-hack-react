@@ -10,11 +10,9 @@ import '../node_modules/@blueprintjs/core/lib/css/blueprint.css';
 import Home from './views/HomeView';
 import ExampleView from './views/exampleView';
 import MapContainer from './components/Map/Map.js';
+import AlgMapContainer from './components/Map/AlgMap.js';
 import Container from './components/Container/Container';
 import rfidResult from './components/rfidSearchResult/rfidSearchResult';
-// import Menu from './components/Menu/Menu';
-// import Navigation from './components/Menu/MenuComponents/Navigation/MenuNavigation.js'
-// import Rfid from './components/Menu/MenuComponents/RFID/RfidCard.js';
 
 class App extends Component {
   render() {
@@ -26,6 +24,7 @@ class App extends Component {
             <Route exact path="/map" component={MapContainer} />
             <Route path='/example' component={ExampleView}/>
             <Route path='/rfidResult/:id' component={rfidResult}/>
+            <Route exact path="/alg-map" component={AlgMapContainer} />
           </Container>
         </div>
       </Router>
