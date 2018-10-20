@@ -16,7 +16,8 @@ export class MapContainer extends React.Component {
       selectedTrainer: {},
       places: [],
       polilineArray: [],
-      searchPlaces: []
+      searchPlaces: [],
+      markersReady: false
     };
   }
 
@@ -67,7 +68,8 @@ export class MapContainer extends React.Component {
 
   setMarkersOnSearch(points){
     this.setState({
-      searchPlaces: points
+      searchPlaces: points,
+      markersReady: true
     });
   }
 
@@ -82,6 +84,14 @@ export class MapContainer extends React.Component {
               lng: 23.158714
             }}>
 
+            {this.state.markersReady == true ? 
+            this.state.searchPlaces.map((marker, i) =>
+             <Marker
+              key={i}
+              index={i}
+              position={{ lat: marker.latitude, lng: marker.longitude }} />
+            ) : ''}
+            
             {this.state.places.length != 0 ? this.state.places.map((place, i) =>
               <Polyline
                 key={i}
@@ -91,13 +101,7 @@ export class MapContainer extends React.Component {
               />
             ) : ''}
 
-            {this.state.searchPlaces.length != 0 ? this.state.searchPlaces.map((place, i) =>
-             <Marker
-             key={i}
-             index={i}
-             position={{ lat: place.latitude, lng: place.longitude }}
-             icon={'https://maps.google.com/mapfiles/kml/shapes/parking_lot_maps.png'} />
-            ) : ''}
+
           </Map>
           <Menu setMarkersOnSearch={this.setMarkersOnSearch}/>
         </Container>
