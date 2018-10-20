@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@blueprintjs/core": "^3.7.0",
+    "@blueprintjs/table": "^3.2.0",
     "axios": "^0.18.0",
     "babel-plugin-styled-components": "^1.8.0",
     "decode-google-map-polyline": "^1.0.1",
