@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import Menu from '../Menu/Menu';
 
 // styles
 import styles from './Container.module.scss';

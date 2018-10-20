@@ -24,6 +24,11 @@ class MenuNavigation extends Component {
               Example
             </Button>
           </Link>
+          <Link to='/alg-map'>
+            <Button>
+              Algorytm
+            </Button>
+          </Link>
         </Card>
       </div>
     );
