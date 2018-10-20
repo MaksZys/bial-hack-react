@@ -1,7 +1,7 @@
 import React from 'react';
 import { Map, InfoWindow, Marker, GoogleApiWrapper, Polyline } from 'google-maps-react';
 import axios from 'axios';
-import decodePolyLine from 'decode-google-map-polyline';
+import decodePolyline from 'decode-google-map-polyline';
 import Container from '../Container/Container';
 import Menu from '../Menu/Menu';
 
@@ -14,37 +14,50 @@ export class MapContainer extends React.Component {
             activeMarker: {},
             nearestTrainers: [],
             selectedTrainer: {},
-            places: []
+            places: [],
+            polilineArray: [],
         };
-        this.drawPathOnMap();
+        this.renderPaths = this.renderPaths.bind(this);
+
+        // this.drawPathOnMap();
     }
 
-    drawPathOnMap = () => {
-      const startLat = 53.136602;
-      const startLng = 23.158714;
-      const endLat = 53.132591;
-      const endLong = 23.163016;
-      const apiUrl = 'http://bial-hack-api.azurewebsites.net/api/trashtransport/getroute?startLat='+ startLat +'&startLng=' + startLng + '&destLat=' + endLat + '&destLng=' + endLong + '&fbclid=IwAR0wWDXsdLRJgkXodD78bzJiCRYw8PQk3AM9VDJoZRsAluS41A-Ak-Ulu40';
-
-            axios.get(apiUrl)
-            .then((response) => {
-                if (response.data) {
-                    this.setState({
-                        places: decodePolyLine(response.data.encodedPlaces)
-                    });
-                    this.setLoading(false);
-                }
+    async componentDidMount() {
+      const apiUrl = 'https://bial-hack-api.azurewebsites.net/api/trashtransport/get?limit=10&fbclid=IwAR2vSMAK07fsOuRcnGzDSZ58NqYNcCRo_57QHxvNAqzn4unhPifrzqwp9JY';
+      let polyline = [];
+      await axios.get(apiUrl)
+        .then(async (response) => {
+          if (response.data) {
+            for (let i = 0; i < this.state.places.length - 1; i++) {
+              this.drawPathOnMap(this.state.places[i].latitude, this.state.places[i].longitude, this.state.places[i + 1].latitude, this.state.places[i + 1].longitude)
+                .then((response) => {
+                  if (response.data) {
+                    polyline.push(decodePolyline(response.data.encodedPlaces));
+                  }
+                })
+                .catch((error) => {
+                  console.error(error);
+                });  
+              }
+            }
+            this.setState({
+              places: polyline
             })
-            .catch((error) => {
-                this.setLoading(false);
-            })
-    }
-
-    setLoading = (state) =>
-        this.setState({
-            loading: state
+            await this.renderPaths();
+        },
+        (responseError) => {
+          console.error(responseError)
         });
+    }
 
+    async drawMapFromArray() {
+    }
+
+    drawPathOnMap(startLat, startLng, endLat, endLng) {
+      const apiUrl = 'http://bial-hack-api.azurewebsites.net/api/trashtransport/getroute?startLat='+ startLat +'&startLng=' + startLng + '&destLat=' + endLat + '&destLng=' + endLng + '&fbclid=IwAR0wWDXsdLRJgkXodD78bzJiCRYw8PQk3AM9VDJoZRsAluS41A-Ak-Ulu40';
+      const polyline = [];
+      return axios.get(apiUrl)
+    }
 
     onMarkerClick = (props, marker, e) => {
         this.setState({
@@ -52,6 +65,32 @@ export class MapContainer extends React.Component {
             activeMarker: marker,
             showInfoWindow: true
         });
+    }
+
+    // async renderPaths() {
+    //   if (this.state.places.length > 0) {
+    //     return await this.state.places.map(function(path, i){
+    //       return(
+    //         <Polyline
+    //           path = {path}
+    //           strokeOpacity= {1.0}
+    //           strokeWeight= {2}
+    //         />
+    //       );
+    //    });
+    //   }
+    // }
+
+    async renderPaths() {
+      if (this.state.places.length > 0) {
+        await this.state.places.map(function(path, i){
+          this.setState({
+            polilineArray: this.state.polilineArray.push(
+              <Polyline path = {path} strokeOpacity= {1.0} strokeWeight= {2}/>
+            )
+          });
+       });
+      }
     }
 
     render() {
@@ -65,11 +104,14 @@ export class MapContainer extends React.Component {
                         //     lng: this.props.center.lng
                         // }}>
                         >
-                           <Polyline
-                           path= {this.state.places}
-                           strokeOpacity= {1.0}
-                           strokeWeight= {2}
-                       />
+                          {/* {this.renderPaths()} */}
+                          {
+                            this.state.polilineArray.map(element => {
+                              console.log(element);
+                              return element;
+                            })
+                          }
+
                     </Map> : ''
                     <Menu/>
                     </Container>
