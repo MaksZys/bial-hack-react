@@ -5,6 +5,9 @@ import decodePolyline from 'decode-google-map-polyline';
 import Container from '../Container/Container';
 import Menu from '../Menu/Menu';
 
+import menu from '../../stores/MenuStore';
+import {view} from 'react-easy-state';
+
 export class MapContainer extends React.Component {
   constructor(props) {
     super(props);
@@ -22,31 +25,35 @@ export class MapContainer extends React.Component {
   }
 
   async componentDidMount() {
-    // const apiUrl = 'https://bial-hack-api.azurewebsites.net/api/trashtransport/GetByVehicleNumber?vehicleNumber=BL 46467';
-    // const polyline = [];
-    // await axios.get(apiUrl)
-    //   .then(async (response) => {
-    //     if (response.data) {
-    //       for (let i = 0; i < response.data.length - 1; i++) {
-    //         this.drawPathOnMap(response.data[i].latitude, response.data[i].longitude, response.data[i + 1].latitude, response.data[i + 1].longitude)
-    //           .then((nestedResponse) => {
-    //             if (nestedResponse.data) {
-    //               polyline.push(decodePolyline(nestedResponse.data.encodedPlaces));
-    //             }
-    //             this.setState({
-    //               places: polyline
-    //             })
-    //           })
-    //           .catch((error) => {
-    //             console.error(error);
-    //           });
-    //       }
-    //     }
+  
+  }
 
-    //   },
-    //     (responseError) => {
-    //       console.error(responseError)
-    //     });
+  searchPolylines(value){
+    const apiUrl = 'https://bial-hack-api.azurewebsites.net/api/trashtransport/GetByVehicleNumber?vehicleNumber=' + value;
+    const polyline = [];
+    axios.get(apiUrl)
+      .then((response) => {
+        if (response.data) {
+          for (let i = 0; i < response.data.length - 1; i++) {
+            this.drawPathOnMap(response.data[i].latitude, response.data[i].longitude, response.data[i + 1].latitude, response.data[i + 1].longitude)
+              .then((nestedResponse) => {
+                if (nestedResponse.data) {
+                  polyline.push(decodePolyline(nestedResponse.data.encodedPlaces));
+                }
+                this.setState({
+                  places: polyline
+                })
+              })
+              .catch((error) => {
+                console.error(error);
+              });
+          }
+        }
+
+      },
+        (responseError) => {
+          console.error(responseError)
+        });
   }
 
   async drawMapFromArray() {
@@ -76,7 +83,6 @@ export class MapContainer extends React.Component {
   render() {
     return (
       <div className="home-map">
-        <Container>
           <Map google={this.props.google}
             zoom={15}
             initialCenter={{
@@ -101,16 +107,23 @@ export class MapContainer extends React.Component {
               />
             ) : ''}
 
+            {this.state.searchPlaces.length != 0 ? this.state.searchPlaces.map((place, i) =>
+             <Marker
+             key={i}
+             index={i}
+             position={{ lat: place.latitude, lng: place.longitude }}
+             icon={'https://maps.google.com/mapfiles/kml/shapes/parking_lot_maps.png'} />
+            ) : ''}
 
           </Map>
-          <Menu setMarkersOnSearch={this.setMarkersOnSearch}/>
-        </Container>
+          <Menu searchPolylinesParent={this.searchPolylines} setMarkersOnSearch={this.setMarkersOnSearch}/>
       </div>
 
     );
   }
 }
 
-export default GoogleApiWrapper({
+export default view(GoogleApiWrapper({
   apiKey: ('AIzaSyCzPSZ_8Zp_lr8s2Dduhsnm1KoUwtvuNVY')
-})(MapContainer)
+})(MapContainer));
+

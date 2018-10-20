@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Container from './components/Container/Container';
+import Menu from './components/Menu/Menu';
 
 // styles
 import '../node_modules/@blueprintjs/icons/lib/css/blueprint-icons.css';
@@ -17,10 +19,13 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/map" component={MapContainer} />
-          <Route exact path="/alg-map" component={AlgMapContainer} />
-          <Route path='/example' component={ExampleView}/>
+          <Container>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/map" component={MapContainer} />
+            <Route exact path="/alg-map" component={AlgMapContainer} />
+            <Route path='/example' component={ExampleView}/>
+            <Menu/>
+          </Container>
         </div>
       </Router>
     );

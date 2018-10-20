@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { Card, Icon, InputGroup } from '@blueprintjs/core';
-import { view } from 'react-easy-state';
+import React, {Component} from 'react';
+import {Card, Icon, InputGroup, AnchorButton} from '@blueprintjs/core';
+import {view} from 'react-easy-state';
 import axios from 'axios';
 
 // styles
@@ -16,12 +16,15 @@ class Menu extends Component {
     this.state = {
       showMenu: false,
       searchResults: [],
-      searchTerm: ""
+      searchTerm: "",
+      searchPolylinesTerm: ""
     };
 
     this.changeMenuState = this.changeMenuState.bind(this);
     this.searchValue = this.searchValue.bind(this);
+    this.searchValueDlaMarcina = this.searchValueDlaMarcina.bind(this);
     this.handleSearchTermChange = this.handleSearchTermChange.bind(this);
+    this.handlePolylinesChange = this.handlePolylinesChange.bind(this);
   }
 
   changeMenuState() {
@@ -54,7 +57,17 @@ class Menu extends Component {
       })
   }
 
+  handlePolylinesChange(event){
+    var value = event.target.value;
+    this.setState({
+      searchPolylinesTerm: value
+    });
+  }
 
+  searchValueDlaMarcina(event) {
+    var term = this.state.searchPolylinesTerm;
+    this.props.searchPolylinesParent(term);
+  }
 
   render() {
     return (
@@ -83,6 +96,8 @@ class Menu extends Component {
             <div>
               <Card>
                 <InputGroup name="serachTerm" onChange={this.handleSearchTermChange} large round leftIcon='search' />
+                <InputGroup onChange={this.handlePolylinesChange} large round leftIcon='search' className={styles.inuptGroup} />
+                <AnchorButton onClick={this.searchValueDlaMarcina} className={styles.inuptGroup} >szukaj</AnchorButton>
                 {menu.search}
               </Card>
               <br />
