@@ -12,6 +12,7 @@ import '../node_modules/@blueprintjs/core/lib/css/blueprint.css';
 import Home from './views/HomeView';
 import ExampleView from './views/exampleView';
 import MapContainer from './components/Map/Map.js';
+import AlgMapContainer from './components/Map/AlgMap.js';
 
 class App extends Component {
   render() {
@@ -21,8 +22,8 @@ class App extends Component {
           <Container>
             <Route exact path="/" component={Home} />
             <Route exact path="/map" component={MapContainer} />
+            <Route exact path="/alg-map" component={AlgMapContainer} />
             <Route path='/example' component={ExampleView}/>
-            <Menu />
           </Container>
         </div>
       </Router>
