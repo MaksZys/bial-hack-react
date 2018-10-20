@@ -17,13 +17,10 @@ export class MapContainer extends React.Component {
       places: [],
       polilineArray: [],
     };
-    this.renderPaths = this.renderPaths.bind(this);
-
-    // this.drawPathOnMap();
   }
 
   async componentDidMount() {
-    const apiUrl = 'https://bial-hack-api.azurewebsites.net/api/trashtransport/get?limit=100';
+    const apiUrl = 'https://bial-hack-api.azurewebsites.net/api/trashtransport/GetByVehicleNumber?vehicleNumber=BL 46467';
     const polyline = [];
     await axios.get(apiUrl)
       .then(async (response) => {
@@ -44,7 +41,6 @@ export class MapContainer extends React.Component {
           }
         }
 
-        await this.renderPaths();
       },
         (responseError) => {
           console.error(responseError)
@@ -66,32 +62,6 @@ export class MapContainer extends React.Component {
       activeMarker: marker,
       showInfoWindow: true
     });
-  }
-
-  async renderPaths() {
-    if (this.state.places.length > 0) {
-      return await this.state.places.map(function (path, i) {
-        return (
-          <Polyline
-            path={path}
-            strokeOpacity={1.0}
-            strokeWeight={2}
-          />
-        );
-      });
-    }
-  }
-
-  async renderPaths() {
-    if (this.state.places.length > 0) {
-      await this.state.places.map(function (path, i) {
-        this.setState({
-          polilineArray: this.state.polilineArray.push(
-            <Polyline path={path} strokeOpacity={1.0} strokeWeight={2} />
-          )
-        });
-      });
-    }
   }
 
   render() {
