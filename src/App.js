@@ -24,6 +24,7 @@ class App extends Component {
             <Route exact path="/map" component={MapContainer} />
             <Route exact path="/alg-map" component={AlgMapContainer} />
             <Route path='/example' component={ExampleView}/>
+            <Menu/>
           </Container>
         </div>
       </Router>

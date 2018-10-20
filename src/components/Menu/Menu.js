@@ -87,6 +87,7 @@ class Menu extends Component {
               <Card>
                 <InputGroup onChange={this.searchValue} large round leftIcon='search' className={styles.inuptGroup} />
                 <InputGroup name="serachTerm" onChange={this.handleSearchTermChange} large round leftIcon='search' />
+                <AnchorButton onChange={this.searchValueDlaMarcina} className={styles.inuptGroup} >szukaj</AnchorButton>
                 {menu.search}
               </Card>
               <br />
