@@ -16,13 +16,15 @@ class Menu extends Component {
     this.state = {
       showMenu: false,
       searchResults: [],
-      searchTerm: ""
+      searchTerm: "",
+      searchPolylinesTerm: ""
     };
 
     this.changeMenuState = this.changeMenuState.bind(this);
     this.searchValue = this.searchValue.bind(this);
     this.searchValueDlaMarcina = this.searchValueDlaMarcina.bind(this);
     this.handleSearchTermChange = this.handleSearchTermChange.bind(this);
+    this.handlePolylinesChange = this.handlePolylinesChange.bind(this);
   }
 
   changeMenuState() {
@@ -55,8 +57,16 @@ class Menu extends Component {
       })
   }
 
+  handlePolylinesChange(event){
+    var value = event.target.value;
+    this.setState({
+      searchPolylinesTerm: value
+    });
+  }
+
   searchValueDlaMarcina(event) {
-    menu.searchDlaMarcina = event.target.value;
+    var term = this.state.searchPolylinesTerm;
+    this.props.searchPolylinesParent(term);
   }
 
   render() {
@@ -85,9 +95,9 @@ class Menu extends Component {
           this.state.showMenu ?
             <div className={styles.background}>
               <Card>
-                <InputGroup onChange={this.searchValue} large round leftIcon='search' className={styles.inuptGroup} />
                 <InputGroup name="serachTerm" onChange={this.handleSearchTermChange} large round leftIcon='search' />
-                <AnchorButton onChange={this.searchValueDlaMarcina} className={styles.inuptGroup} >szukaj</AnchorButton>
+                <InputGroup onChange={this.handlePolylinesChange} large round leftIcon='search' className={styles.inuptGroup} />
+                <AnchorButton onClick={this.searchValueDlaMarcina} className={styles.inuptGroup} >szukaj</AnchorButton>
                 {menu.search}
               </Card>
               <br />
