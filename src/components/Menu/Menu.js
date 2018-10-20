@@ -83,7 +83,7 @@ class Menu extends Component {
         }
         {
           this.state.showMenu ?
-            <div>
+            <div className={styles.background}>
               <Card>
                 <InputGroup onChange={this.searchValue} large round leftIcon='search' className={styles.inuptGroup} />
                 <InputGroup name="serachTerm" onChange={this.handleSearchTermChange} large round leftIcon='search' />
@@ -91,15 +91,14 @@ class Menu extends Component {
                 {menu.search}
               </Card>
               <br />
-              <ul>
+              <ul className={styles.listSearch}>
               {this.state.searchResults.map((result, i) =>
-                    <li key={i}>
-                        { result.description } <br/>
-                        { result.trashType } <br/>
-                        { result.date } <br/>
-                        { result.vehicleNumber } <br/>
-                        { result.latitude }, {result.longitude}
-                    <hr/>
+                    <li key={i} className={styles.listElement}>
+                      <span class={styles.title}>{result.description }</span>
+                      <span class={styles.trashType}>Rodzaj odpadów: { result.trashType }</span>
+                      <span>Data: { result.date }</span>
+                      <span>Numer rejestracyjny pojazdu: { result.vehicleNumber }</span>
+                      <span>Współrzędne: { result.latitude }, {result.longitude}</span>
                     </li>
                 )}
                 </ul>
