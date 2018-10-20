@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { Button, Icon } from '@blueprintjs/core';
+import MapContainer from '../Map/Map.js';
 
 // styles
 import styles from './home.module.scss';
@@ -40,6 +41,8 @@ class Home extends Component {
             <p>treść częście która chcemy przekazać</p>
           </div>
         }
+
+        
 
         {
           this.state.cardNumber === 1 &&

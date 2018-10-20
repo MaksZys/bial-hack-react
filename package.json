@@ -4,7 +4,10 @@
   "private": true,
   "dependencies": {
     "@blueprintjs/core": "^3.7.0",
+    "axios": "^0.18.0",
     "babel-plugin-styled-components": "^1.8.0",
+    "decode-google-map-polyline": "^1.0.1",
+    "google-maps-react": "^2.0.2",
     "lodash-decorators": "^6.0.0",
     "node-sass": "^4.9.4",
     "react": "^16.5.2",
