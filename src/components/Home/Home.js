@@ -40,7 +40,7 @@ class Home extends Component {
             <div className={styles.imgWrapper}>
               <img src={search} alt='sample 1'/>
             </div>
-            <p>treść częście która chcemy przekazać</p>
+            <p>Aplikacja Optima umożliwi łatwiejsze zarządzanie parkiem maszyn odpowiedzialnych za wywóz śmieci z miasta Białystok. Nasze rozwiązanie zostało oparte o innowacyjnye rozwiązania, które są tanie i łatwe w utrzymaniu. Wychodzimy na przeciw oczekiwaniom naszego klienta - Miasta Białegostoku - aby jeszcze efektywniej dbać o wspolne dobro jakim jest planeta ziemia.</p>
           </div>
         }
 

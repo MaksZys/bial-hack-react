@@ -18,7 +18,7 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div>
+        <div style={{overflow: 'hidden'}}>
           <Container>
             <Route exact path="/" component={Home} />
             <Route exact path="/map" component={MapContainer} />
