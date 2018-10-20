@@ -22,7 +22,8 @@ export class MapContainer extends React.Component {
       searchPlaces: [],
       markersReady: false
     };
-    this.searchPolylines = this.searchPolylines.bind(this);
+    // this.searchPolylines = this.searchPolylines.bind(this);
+    this.setMarkersOnSearch = this.setMarkersOnSearch.bind(this);
   }
 
   async componentDidMount() {

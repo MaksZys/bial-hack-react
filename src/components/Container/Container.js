@@ -5,7 +5,6 @@ import Menu from '../Menu/Menu';
 import styles from './Container.module.scss';
 
 // components
-import Menu from '../Menu/Menu';
 import RfidCard from '../Menu/MenuComponents/RFID/RfidCard';
 import Nav from '../Menu/MenuComponents/Navigation/MenuNavigation';
 
